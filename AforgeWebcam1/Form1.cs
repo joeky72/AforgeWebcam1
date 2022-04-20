@@ -15,6 +15,8 @@ namespace AforgeWebcam1
 {
     public partial class Form1 : Form
     {
+        string path;
+        string poop;
         public Form1()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace AforgeWebcam1
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
 
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             videoCaptureDevice=new VideoCaptureDevice(filterInfoCollection[cboCamera.SelectedIndex].MonikerString);
@@ -30,7 +33,7 @@ namespace AforgeWebcam1
             videoCaptureDevice.Start();
         }
 
-        private void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        public void VideoCaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             pic.Image = (Bitmap)eventArgs.Frame.Clone();
         }
@@ -52,17 +55,24 @@ namespace AforgeWebcam1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string poop = ".jpg";
-            string path = @"N:\Manufacturing\GSTest\CommonRW\case marking samples  2022";
+            poop = ".jpg";
+            path = @"C:\db\images\";
+            // @"N:\Manufacturing\GSTest\CommonRW\case marking samples  2022\"
+
+            // The program will attempt to save the image as a .Jpeg to specified path then close the project
+            // If an error occurs, the error will be displayed to the user and the project will be closed.
             try
             {
+                Bitmap bm = new Bitmap(pic.Image);
+                bm.Save(path + LotID.Text + poop, ImageFormat.Jpeg);
                 videoCaptureDevice.Stop();
-                pic.Image = 
-                pic.Image.Save(path + @" + LotID.Text + poop", ImageFormat.Jpeg);
-            } catch (Exception error){
+                Environment.Exit(0);
+            } 
+            catch (Exception error){
                 Console.WriteLine(error);
                 videoCaptureDevice.Stop();
                 MessageBox.Show(error.Message);
+                Environment.Exit(0);
                 videoCaptureDevice.Start();
             }
         }
