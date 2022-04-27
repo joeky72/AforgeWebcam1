@@ -15,8 +15,9 @@ namespace AforgeWebcam1
 {
     public partial class Form1 : Form
     {
-        string path;
         string poop;
+        string pee;
+        string poo;
         public Form1()
         {
             InitializeComponent();
@@ -56,16 +57,20 @@ namespace AforgeWebcam1
         private void button1_Click(object sender, EventArgs e)
         {
             poop = ".jpg";
-            path = @"C:\db\images\";
-            // @"N:\Manufacturing\GSTest\CommonRW\case marking samples  2022\"
+            pee = @"\\leosv02ecc1.ec.local\Manufacturing\GSTest\DeptData\Conlan\";
+            poo = @"C:\images\poop";
+
+            // @"\\leosv02ecc1.ec.local\Manufacturing\GSTest\CommonRW\case marking samples  2022\"
+            // I cannot save to this path from the code, still working on why
 
             // The program will attempt to save the image as a .Jpeg to specified path then close the project
-            // If an error occurs, the error will be displayed to the user and the project will be closed.
+            // If an error occurs, the error will be displayed to the user then close the project.
             try
             {
                 Bitmap bm = new Bitmap(pic.Image);
-                bm.Save(path + LotID.Text + poop, ImageFormat.Jpeg);
+                bm.Save(pee + LotID.Text + poop, ImageFormat.Jpeg);
                 videoCaptureDevice.Stop();
+                MessageBox.Show(LotID.Text + " has been saved to " + pee);
                 Environment.Exit(0);
             } 
             catch (Exception error){
@@ -73,7 +78,6 @@ namespace AforgeWebcam1
                 videoCaptureDevice.Stop();
                 MessageBox.Show(error.Message);
                 Environment.Exit(0);
-                videoCaptureDevice.Start();
             }
         }
     }
