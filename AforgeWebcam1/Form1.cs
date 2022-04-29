@@ -15,9 +15,10 @@ namespace AforgeWebcam1
 {
     public partial class Form1 : Form
     {
-        string poop;
-        string pee;
-        string poo;
+        string path1;
+        string path2;
+        string testpath;
+        string ndrive;
         public Form1()
         {
             InitializeComponent();
@@ -56,21 +57,23 @@ namespace AforgeWebcam1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            poop = ".jpg";
-            pee = @"\\leosv02ecc1.ec.local\userdata\Manufacturing\GSTest\DeptData\Conlan\";
-            poo = @"\\leosv02ecc1.ec.local\userdata\Manufacturing\GSTest\CommonRW\case marking samples  2022";
-            //path poo is the target destination. I don't have write privelidges here
+            path1 = @"\\leosv02ecc1.ec.local\userdata\Manufacturing\GSTest\DeptData\Conlan\";
+            path2 = @"\\leosv02ecc1.ec.local\userdata\Manufacturing\GSTest\CommonRW\case marking samples  2022\";
+            testpath = @"C:\images\";
+            ndrive = "N:\\Manufacturing\\GSTest\\CommonRW\\case marking samples  2022";
+            //path2 is the target destination. I don't have write privelidges here
 
             // The program will attempt to save the image as a .Jpeg to specified path then close the project
             // If an error occurs, the error will be displayed to the user then close the project.
             try
             {
                 Bitmap bm = new Bitmap(pic.Image);
-                bm.Save(pee + LotID.Text + poop, ImageFormat.Jpeg);
-                //Activate the below line of code only on computer with path poo write permission
-                //System.IO.File.Move(pee + LotID.Text + poop, poo + LotID.Text + poop);
+                bm.Save(path1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
+                //Activate the below line of code only on computers with path2 write permission.
+                //It is most likely not needed, but is a possible workaround to a direct write.
+                System.IO.File.Move(path1 + LotID.Text + ".jpg", path2 + LotID.Text + ".jpg");
                 videoCaptureDevice.Stop();
-                MessageBox.Show(LotID.Text + " has been saved to " + pee);
+                MessageBox.Show(LotID.Text + " has been saved to " + ndrive);
                 Environment.Exit(0);
             } 
             catch (Exception error){
