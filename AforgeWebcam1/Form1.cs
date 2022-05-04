@@ -68,10 +68,7 @@ namespace AforgeWebcam1
                 {
                     
                     Bitmap bm = new Bitmap(pic.Image);
-                    bm.Save(testpath1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
-                    //Activate the below line of code only on computers with path2 write permission.
-                    //It is most likely not needed, but is a possible workaround to a direct write.
-                    //System.IO.File.Move(testpath1 + LotID.Text + ".jpg", path1 + LotID.Text + ".jpg");
+                    bm.Save(path1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
                     videoCaptureDevice.Stop();
                     MessageBox.Show(LotID.Text + " has been saved to " + ndrive);
                     Application.Exit();
