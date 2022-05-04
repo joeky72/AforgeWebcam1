@@ -68,9 +68,9 @@ namespace AforgeWebcam1
                 {
                     
                     Bitmap bm = new Bitmap(pic.Image);
-                    bm.Save(path1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
+                    bm.Save(testpath1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
                     videoCaptureDevice.Stop();
-                    MessageBox.Show(LotID.Text + " has been saved to " + ndrive);
+                    MessageBox.Show(LotID.Text + ".jpg" + " has been saved to " + ndrive);
                     Application.Exit();
                 }
                 catch (Exception error)
