@@ -1,7 +1,7 @@
 # AforgeWebcam1
 This is a project I took on to simplify a process for operators in my company and reduce error.
 I built it because as an electronics engineering student, I want to learn programming and this was a great oppurtunity to start. 
-I originally tried to create this as a UWP application, but learned that .net has extensive documentaion and is the place to start.  
+I originally tried to create this as a UWP application, but learned that forms has extensive documentaion and is the place to start.  
   
 This is a C# windows forms application using .NET Framework 4.7.2.
 This project uses AForge to stream a camera preview to a picturebox.
