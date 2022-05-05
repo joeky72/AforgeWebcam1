@@ -56,13 +56,13 @@ namespace AforgeWebcam1
             // If an error occurs, the error will be displayed to the user then close the project.
             if (videoCaptureDevice.IsRunning)
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 try
                 {
-                    
+
                     Bitmap bm = new Bitmap(pic.Image);
-                    bm.Save(path1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
                     videoCaptureDevice.Stop();
+                    bm.Save(path1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
                     MessageBox.Show(LotID.Text + " has been saved to " + ndrive);
                     Application.Exit();
                 }
