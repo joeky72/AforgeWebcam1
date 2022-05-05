@@ -63,7 +63,7 @@ namespace AforgeWebcam1
             if (videoCaptureDevice.IsRunning)
             {
                 // Below line prevents crashes from camera not initializing before save is pressed
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 try
                 {
                     
