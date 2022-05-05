@@ -63,13 +63,13 @@ namespace AforgeWebcam1
             if (videoCaptureDevice.IsRunning)
             {
                 // Below line prevents crashes from camera not initializing before save is pressed
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 try
                 {
                     
                     Bitmap bm = new Bitmap(pic.Image);
-                    bm.Save(testpath1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
                     videoCaptureDevice.Stop();
+                    bm.Save(testpath1 + LotID.Text + ".jpg", ImageFormat.Jpeg);
                     MessageBox.Show(LotID.Text + ".jpg" + " has been saved to " + ndrive);
                     Application.Exit();
                 }
