@@ -10,11 +10,11 @@ A user would open the program, select camera in the combobox, hit start camera, 
 Without this application, the image would be saved manually in the camera app, and the user would have to find and rename it themselves.  
   
 Some obstacles I came accross were path permissions, memory leakage, instability, and GDI errors. The path permission was only an issue on the dev machine.
-The memory leakage was occuring when the programmed attempted to save an image to a path that existed but that I did not have write permission to.
+The memory leakage was occuring when the program attempted to save an image to a path that existed but that I did not have write permission to.
 Using a seperate test path allowed me to verify the program works when deployed.
 The instability/freezes/crashes were caused by two things, If the save button was pressed before start camera or if the camera has not finished initializing before pressing save.
-The first issue was solved wiht an if else statement, checking if camera is running and restarting the program with a message if it is not. 
-The other issue was fixed with Thread.Sleep(3000), which pauses the code for three seconds before attemting to save the image.  
+The first issue was solved with an if else statement, checking if camera is running and restarting the program with a message if it is not. 
+The other issue was fixed with Thread.Sleep(500), which pauses the code for half a second before attemting to save the image.  
 If the file cannot be saved, an error message will appear with details.  
   
 The file is signed with no password, I would recommend this file be signed properly and securely if it is to be deployed for more than a year. 
