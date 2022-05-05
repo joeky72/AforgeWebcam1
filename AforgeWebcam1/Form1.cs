@@ -56,7 +56,7 @@ namespace AforgeWebcam1
             // If an error occurs, the error will be displayed to the user then close the project.
             if (videoCaptureDevice.IsRunning)
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(500);
                 try
                 {
 
